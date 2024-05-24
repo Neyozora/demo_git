@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
+        html, body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+        }
+
+        #container {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .button-left {
+        position: absolute;
+        left: 10px;
+        z-index: 4;
+        }
+        .button-right {
+        position: absolute;
+        right: 10px;
+        z-index: 4;
+        }
+        .menu {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        z-index: 4;
+        }
+        .container {
+        position: relative;
+        }
+        .rectangle {
+            position: absolute;
+            height: 750px;
+            width: 410px;
+            top:  6%;
+            left: 0%;
+            bottom: 30%;
+            background-color: #555;
+            opacity: 1;
+            z-index: 5;
+        }
+        .center {
+        position: absolute;
+        text-align: center;
+        width: 34%;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #555;     /* ini warna sebelumnya rgb(54, 53, 53); */
+        opacity: 70%;
+        padding: 8px; 
+        display: inline-block; 
+        border-radius: 30px;
+        z-index: 2;
+        }
+        .rectangle2{
+            position: absolute;
+            height: 490px;
+            width: 288px;
+            top:  10%;
+            right: -3%;
+            bottom: 30%;
+            background-color: #555;
+            opacity: 80%;
+            z-index: 5;
+            border-radius: 50px;
+        }
+        .center h1 {
+        letter-spacing: 5px;
+        margin: 0;
+        color: red;
+        font-weight:500;
+        z-index: 2;
+        }
+
+        #image {
+            width: 1920px;
+            height: 950px;
+            background-position: 50% 50%;
+            background-size: 120%;
+            background-repeat: no-repeat;
+            background-image: url('https://bg-so-1.zippyimage.com/2024/02/21/cb648f89c7ec91b108bb8781b3a80293.png'); 
+            cursor: grab; 
+            border: 2px solid transparent;
+            position: absolute;
+            z-index: 1; 
+        }
+
+        #image:active {
+            border-color: red;
+        }
+        .img-rectangle {
+            opacity: 1;
+            height: 350px;
+            width: 350px;
+            display: block;
+            margin: auto; 
+            margin-top: 5px; 
+            margin-bottom: 5px; 
+            border: 1px solid white;
+        }
+        table {
+            margin: 0 auto; 
+        }
+
+        th, td {
+            text-align: center;
+            padding: 3.5px;
+            color: white;
+           
+        }
+        .rtl{
+            color: yellow;
+            }
+        .disarmed{
+            color: red;
+            }
+        input{
+                width: 84px;
+                margin-left: 8%; 
+
+            }
+        input, .button-connect, .button-left, .button-right, .menu {
+                font-size: 16px; 
+                padding: 6px; 
+                margin-top: 8px;
+            }
+        .link-stats{
+        color: white;
+        font-size: 16px;
+        margin-left: 5%;
+        margin-top: 4px;
+        padding:10px;
+        display: block;
+        }
+        .kotak-teks{
+            width: 200px;
+            height: 270px;
+            background-color: rgb(255, 255, 255);
+            font-size: 11px;
+            margin-left: 8%;
+            margin-top: 70px;
+            padding:2px;
+            display: block;
+            color: black;
+        }
+        .text-bottom {
+        display: flex;
+        flex-direction: row; 
+        justify-content: space-between; 
+        margin-top: 60px;
+        color: white;
+        float: left;
+        }
+        .text-bottom ul {
+            list-style-type: none; 
+            display: flex;
+            flex-direction: row;
+        }
+
+        .text-bottom li {
+            margin-right: 20px;
+            bottom:  100px;
+        }
+
+    </style>
+      <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header class="navbar">
+        <button class="button-left">HUD</button>
+        <button class="button-right">Koneksi</button>
+        <button class="menu">Menu</button>
+    </header>
+    <main>
+        <div class = "rectangle">
+            <img src= "{{ url_for('video') }}" class="img-rectangle">        
+            <table>
+                <tr>
+                    <th>Kecepatan</th>
+                    <th>Ketinggian</th>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>900</td>
+                </tr>
+                <tr>
+                    <th>Tujuan</th>
+                    <th>Jarak</th>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <th>Yaw</th>
+                    <th>Pitch</th>
+                </tr>
+                <tr>
+                    <td>-0.47</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th>Roll</th>
+                    <th>AirSpeed</th>
+                </tr>
+                <tr>
+                    <td>-0.6761731505393982</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th class="rtl">RTL</th>
+                    <th class="disarmed">DISARMED</th>
+                </tr>
+                <tr>
+                    <th>Altitude</th>
+                    <th>Longitude</th>
+                </tr>
+                <tr>
+                    <th>0</th>
+                    <th>0</th>
+                </tr>
+            </table>
+            <div class="text-bottom">
+                <div>
+                    <ul>
+                        <li>Satelit : 0</li>
+                        <li>HDOP : 655.35</li>
+                    </ul>
+                </div>
+            </div>            
+        </div>
+        <div class="container">
+          <div class="center">
+            <h1>APTRG</h1>
+          </div>
+        </div>
+        <div class="rectangle2">
+            <a href="google.com" class="link-stats">Stats</a>      
+            <input type="text" name="port" placeholder="Port" required>
+            <button class="button-connect">Connect</button> 
+            <div class="kotak-teks">00:59:08,0,Tidak dapat membaca compas3D
+                Fix,==========,00:59:08,0,Tidak dapat membaca compas,3D
+                Fix,==========,00:59:08,0,Tidak dapat membaca compas,3D
+                Fix,==========,00:59:08,0,Tidak dapat membaca compas,3D
+                Fix,==========
+            </div>
+        </div>
+    
+   
+    </main>
+
+    <div id="container">
+        <div id="image"></div>
+    </div>
+
+    <script>
+        
+
+        const container = document.getElementById('container');
+        const image = document.getElementById('image');
+
+        let isDragging = false;
+        let startX, startY, startScrollLeft, startScrollTop;
+
+        image.addEventListener('mousedown', function(event) {
+            isDragging = true;
+            startX = event.clientX - image.offsetLeft;
+            startY = event.clientY - image.offsetTop;
+            startScrollLeft = container.scrollLeft;
+            startScrollTop = container.scrollTop;
+            image.style.cursor = 'grabbing'; 
+        });
+
+        image.addEventListener('mouseup', function(event) {
+            isDragging = false;
+            image.style.cursor = 'grab'; 
+        });
+
+        image.addEventListener('mousemove', function(event) {
+            event.preventDefault();
+            if (!isDragging) return;
+            const x = event.clientX - startX;
+            const y = event.clientY - startY;
+            container.scrollLeft = startScrollLeft - x;
+            container.scrollTop = startScrollTop - y;
+        });
+
+    image.addEventListener('wheel', function(event) {
+        event.preventDefault();
+        const delta = Math.sign(event.deltaY);
+        let scale = 1.1;
+        if (delta < 0) {
+        scale = 0.9;
+        }
+        const rect = image.getBoundingClientRect();
+        const offsetX = event.clientX - rect.left;
+        const offsetY = event.clientY - rect.top;
+        const newWidth = rect.width * scale;
+        const newHeight = rect.height * scale;
+        const newLeft = offsetX - (offsetX - rect.left) * scale;
+        const newTop = offsetY - (offsetY - rect.top) * scale;
+    
+    
+        const containerRect = container.getBoundingClientRect();
+        if (newWidth > containerRect.width || newHeight > containerRect.height) {
+            return; 
+        }
+    
+    
+        if (newLeft > containerRect.left || newLeft + newWidth < containerRect.right || newTop > containerRect.top || newTop + newHeight < containerRect.bottom) {
+            return;
+        }
+
+        image.style.width = `${newWidth}px`;
+        image.style.height = `${newHeight}px`;
+        image.style.left = `${newLeft}px`;
+        image.style.top = `${newTop}px`;
+        
+        setInterval(function() {
+            const rect = rectangle.getBoundingClientRect();
+            const imgRect = image.getBoundingClientRect();
+            const newLeft = Math.min(rect.width - imgRect.width, Math.max(0, imgRect.left));
+            const newTop = Math.min(rect.height - imgRect.height, Math.max(0, imgRect.top));
+            image.style.left = `${newLeft}px`;
+            image.style.top = `${newTop}px`;
+        }, 100);
+    });
+
+    </script>
+</body>
+</html>
+
+<!-- class="img-rectangle"  -->
